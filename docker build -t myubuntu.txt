@@ -1,0 +1,49 @@
+Admins-MacBook-Air:code admin$ docker build -t myubuntu .
+[+] Building 20.7s (8/8) FINISHED                                                                            docker:desktop-linux
+ => [internal] load .dockerignore                                                                                            0.0s
+ => => transferring context: 2B                                                                                              0.0s
+ => [internal] load build definition from Dockerfile                                                                         0.0s
+ => => transferring dockerfile: 345B                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                             1.7s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                0.0s
+ => [1/3] FROM docker.io/library/ubuntu:latest@sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b       1.5s
+ => => resolve docker.io/library/ubuntu:latest@sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b       0.0s
+ => => sha256:ba545858745d6307f0d1064d0d25365466f78d02f866cf4efb9e1326a4c196ca 424B / 424B                                   0.0s
+ => => sha256:da935f0649133cbea2f5ad83db14bf782aa5ee9ad17cd609253e3750201a9298 2.32kB / 2.32kB                               0.0s
+ => => sha256:005e2837585d0b391170fd9faf2e0c279d64ba0eb011cda8dedf28cb5839861e 27.36MB / 27.36MB                             0.6s
+ => => sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b 1.13kB / 1.13kB                               0.0s
+ => => extracting sha256:005e2837585d0b391170fd9faf2e0c279d64ba0eb011cda8dedf28cb5839861e                                    0.7s
+ => [2/3] RUN apt-get -yqq update                                                                                            6.1s
+ => [3/3] RUN apt-get -yqq install apache2                                                                                  11.2s
+ => exporting to image                                                                                                       0.3s
+ => => exporting layers                                                                                                      0.3s
+ => => writing image sha256:550e9d5299e6abb4bb6abda735333d71bc965959955fcd21c8e7d8bacab31cfe                                 0.0s 
+ => => naming to docker.io/library/myubuntu                                                                                  0.0s 
+                                                                                                                                  
+What's Next?                                                                                                                      
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+Admins-MacBook-Air:code admin$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+myubuntu                   latest    550e9d5299e6   37 seconds ago   219MB
+mypython                   latest    b170b48700ab   4 hours ago      1.01GB
+myalpine                   latest    fae4ddee3deb   5 hours ago      38.7MB
+myresume                   latest    227d1a5d3226   29 hours ago     187MB
+busybox                    latest    23466caa55cb   2 weeks ago      4.04MB
+alpine                     latest    1dc785547989   4 weeks ago      7.73MB
+docker/welcome-to-docker   latest    648f93a1ba7d   8 weeks ago      19MB
+hello-world                latest    ee301c921b8a   8 months ago     9.14kB
+Admins-MacBook-Air:code admin$ docker run -d -it myubuntu ping 8.8.8.8
+2d81a4d42480a76ebe47d679c0d405775a6a93c3e12512b3cbe88af458d5e710
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "ping": executable file not found in $PATH: unknown.
+Admins-MacBook-Air:code admin$ docker run -d -it myubuntu ping 8.8.8.8
+6871c87987739bd81a50c7f9d553cdb51b0027254a6cd008a2b2865cae323c4e
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "ping": executable file not found in $PATH: unknown.
+Admins-MacBook-Air:code admin$ docker run -d -it myubuntu sh
+a45705693a08b37897463d7adaf98cf9d020c033b3e56c34b63dde29a0f79023
+Admins-MacBook-Air:code admin$ docker ps
+CONTAINER ID   IMAGE      COMMAND   CREATED          STATUS          PORTS      NAMES
+a45705693a08   myubuntu   "sh"      22 seconds ago   Up 21 seconds   8080/tcp   hardcore_shamir
+Admins-MacBook-Air:code admin$ docker ps
+CONTAINER ID   IMAGE      COMMAND   CREATED         STATUS         PORTS      NAMES
+a45705693a08   myubuntu   "sh"      2 minutes ago   Up 2 minutes   8080/tcp   hardcore_shamir
+Admins-MacBook-Air:code admin$ 
